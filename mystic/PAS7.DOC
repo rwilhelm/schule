@@ -1,0 +1,59 @@
+
+        Mystic Pascal  User Manual                                      75
+
+
+        10.  Mysticin Installation Program
+
+             The installation program is used to modify the Mystic Pascal 
+        system  to  match  your particular computer  system  and  program 
+        needs.   The characteristics of your video display are the  major 
+        factors  to be adjusted.   When Mystic Pascal starts up,  it will 
+        detect  if  a monochrome or color video adapter  is  present  and 
+        behave appropriately.   If you have another type of adapter, such 
+        as,  an  Enhanced  Graphics Adapter,  you must run  the  Mysticin 
+        program before using Mystic.
+
+             To run the installation program, enter:
+
+             MYSTICIN
+
+             The  program  is  self-explanatory and will prompt  for  all 
+        required   information.    Various  parameters  determining   the 
+        configuration of storage in Mystic Pascal may also be modified.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 10:   Mysticin Installation Program
+
+
