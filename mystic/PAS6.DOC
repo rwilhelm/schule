@@ -1,0 +1,914 @@
+
+        Mystic Pascal  User Manual                                      59
+
+
+        9.  Input/Output
+
+             Mystic  Pascal  supports all standard Pascal I/O  procedures 
+        and  functions  and has extensions to support  random  disk  file 
+        access and to assign a DOS file name to a Pascal file variable.
+
+        +    ASSIGN         associate a file name with a file variable
+        +    CLOSE          terminate processing on a file 
+             EOF            Boolean function indicates end-of-file 
+                            condition
+             EOLN           Boolean function indicates end-of-line
+                            condition for text files
+        1.6  GET            move file pointer to next component
+        +    IORESULT       integer function status of I/O operation
+             PAGE           advance textfile output to new page
+        1.6  PUT            append buffer variable to file
+             READ           obtain input from console or disk file
+             READLN         obtain textfile input from new line
+             RESET          prepare an existing file for input
+             REWRITE        create a file for output
+        +    SEEK           position the file pointer for random access
+             WRITE          output data to console, printer, disk file
+             WRITELN        output textfile data and terminate line
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      60
+
+
+        9.1  File Variables
+
+             File variables,  like other variables, are declared in a VAR 
+        section.  They indicated the data type of the file's components.
+
+             TYPE
+             DATAFILE = FILE OF REAL;
+             VAR
+             F1 : DATAFILE;
+             F2 : FILE OF ARRAY [0..63] OF CHAR;
+             F3 : TEXT;
+
+             Textfiles   are  declared  by  the  predefined  type   TEXT.  
+        Textfiles consist of lines of characters separated by the end-of-
+        line byte sequence 0DH, 0AH (carriage return, line feed).
+
+
+
+        9.2  Standard Files
+
+             The  DOS operating system supports several standard  "files" 
+        or logical devices which are always available.  These may be used 
+        directly  as  file variables in Read/ln and Write/ln.   They  may 
+        also  be  assigned  to  Pascal  file  variables  by  the   Assign 
+        procedure.
+
+             CON       standard console device  (input/output)
+             KBD       keyboard device  (input without echoing)
+             AUX       auxiliary device  (input/output)
+             LST       printer  (output)
+             PRN       printer  (output)
+
+             If  no file variable is specified as the first parameter  in 
+        the  Read/ln or Write/ln procedures,  the default files INPUT and 
+        OUTPUT respectively are used.  These are assigned to the standard 
+        console and keyboard devices.
+
+
+
+        9.3  How to Send Data to Your Printer
+
+             To  route  output to your printer specify the Standard  File 
+        LST or PRN in your WRITE or WRITELN statements. 
+
+             WRITELN( PRN, 'This line will be printed.');
+
+             WRITE( PRN, 'X =',X,'   Y =',Y,'   Z =',Z );
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      61
+
+
+        9.4  ASSIGN        (Non-Standard Feature)
+
+             ASSIGN( Filvar, String )
+
+             ASSIGN( Filvar, Standard_file )
+
+             The  procedure  Assign is used to associate a file  variable 
+        with a particular disk file or standard file.
+
+             The  ability  to  assign standard files to a  file  variable 
+        allows  complete I/O redirection within a  Pascal  program.   For 
+        example,  a  program which creates reports could route its output 
+        to a disk file one time and to a printer or console another time.  
+        There  is no need for separate WRITE statements for each type  of 
+        output.
+
+             10: WRITELN('Select output device for Report Listing');
+                 WRITELN('1 = Console   2 = Printer   3 = Diskfile');
+             READLN(X);
+             CASE X OF
+             1 : ASSIGN( REPORTFILE, CON );
+             2 : ASSIGN( REPORTFILE, PRN );
+             3 : ASSIGN( REPORTFILE, 'REPORT.LST' );
+             ELSE GOTO 10
+             END; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      62
+
+
+        9.5  CLOSE         (Non-Standard Feature)
+
+        CLOSE( Filvar )
+
+             The   Close  procedure  must  be  called  after   completing 
+        processing  on  a disk file to ensure that the disk directory  is 
+        updated.  Failure to Close a file after updating it may result in 
+        the loss of data.
+
+             Closing  a file variable to which a standard file  has  been 
+        assigned is treated as a null operation.
+
+
+             CLOSE( F1 );
+
+             CLOSE( REPORTFILE );
+
+             CLOSE( SORTFILE2 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      63
+
+
+        9.6  EOF
+
+        EOF( Filvar )
+
+             Eof  is  a Boolean function which indicates the  end-of-file 
+        condition.   Eof  is true only when the file pointer points  past 
+        the last component of the file, otherwise it is false.
+
+
+             { Copy F1 into F2 }
+             WHILE NOT EOF( F1 ) DO
+                  BEGIN
+                  READ( F1, X );
+                  WRITE( F2, X )
+                  END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      64
+
+
+        9.7  EOLN
+
+        EOLN
+
+        EOLN( Filvar )
+
+             Eoln  is a Boolean function which indicates the  end-of-line 
+        condition of a textfile.   If no file variable is specified,  the 
+        function assumes the file INPUT.   It is a compiler error if  the 
+        file variable is not a textfile.  
+
+
+             { Average N numbers from the console }
+             SUM := 0;      N := 0;
+             WHILE NOT EOLN DO
+                  BEGIN
+                  READ( X );
+                  SUM := SUM + X;
+                  N := N + 1
+                  END
+             WRITELN( 'The average is', SUM DIV N );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      65
+
+
+        9.8  GET, PUT and Buffer Variables                  ** 1.6 **
+
+             Standard  Pascal supports Input/Output operations which  are 
+        more  primitive than Read and Write.   In fact Read and Write are 
+        defined in terms of the procedures Get and Put,  which only  move 
+        data between a file and its buffer variable.
+
+             A  buffer variable is associated with each file.   Its  data 
+        type  is  the  same  as the components of  the  file.   A  buffer 
+        variable  is accessed by using the file variable's name  followed 
+        by an uparrow.
+
+             WRITE( F, X )  is equivalent to    F^ := X;  PUT( F )
+
+             READ( F, X )   is equivalent to    GET( F );  X := F^
+
+
+
+        GET( Filvar )
+
+             The  Get  procedure advances the file pointer  to  the  next 
+        component of the file.  The current component is available in the 
+        file's buffer variable.
+
+
+
+        PUT( Filvar )
+
+             The  Put procedure appends the value in the buffer  variable 
+        to  the file.   The condition EOF( Filvar ) must be true when Put 
+        is called.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      66
+
+
+        9.9  IORESULT
+
+        IORESULT
+
+             This  integer  function gives the return code from the  last 
+        Input/Output  operation.   It should be checked after each  RESET 
+        and REWRITE to be sure that the operation completed successfully.  
+        The IORESULT values are the same values returned by DOS.
+
+             0         Successful completion
+             1         Invalid function number
+             2         File not found
+             3         Path not found
+             4         Too many open files (no handles left)
+             5         Access denied
+             6         Invalid handle
+             7         Memory control blocks destroyed
+             8         Insufficient memory
+             9         Invalid memory block address
+             10        Invalid environment
+             11        Invalid format
+             12        Invalid access code
+             13        Invalid data
+             14        (not used)
+             15        Invalid drive was specified
+             16        Attempted to remove the current directory
+             17        Not same device
+             18        No more files
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      67
+
+
+        9.10  PAGE
+
+        PAGE
+
+        PAGE( Filvar )
+
+             The  Page procedure causes the textfile to begin printing on 
+        a new page if printed on a suitable device.   If no file variable 
+        is specified, the file OUTPUT is assumed.  It is a compiler error 
+        if the file variable is not a textfile.   If the file contains  a 
+        partial line of text, an implicit Writeln is issued.
+             
+             Page always outputs a form feed character CHR(12).
+
+
+             PAGE;
+
+             PAGE( REPORTFILE );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      68
+
+
+        9.11  READ
+
+        READ( variable_list )
+
+        READ( Filvar, variable_list )
+
+             The Read procedure is used to obtain input from a disk  file 
+        or  standard  file  such  as the  console  keyboard.   The  input 
+        value is stored directly into one or more variables.   If no file 
+        variable is specified, the INPUT file is assumed.
+
+
+
+             READ( X, Y, Z );
+
+             READ( F1, CUSTOMER );
+
+             FOR I := 1 TO 100 DO  READ( F2, X[I] );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      69
+
+
+        9.12  READLN
+
+        READLN
+
+        READLN( variable_list )
+
+        READLN( Filvar )
+
+        READLN( Filvar, variable_list )
+
+             The  Readln procedure is similar to Read but may be  applied 
+        only to textfiles.  After the Readln has been processed, the file 
+        pointer  is  set  to the beginning of the  following  text  line.  
+        Unused data on the current line is skipped over.
+
+
+
+             READLN;        {Skip to next line of keyboard input}
+
+             READLN( DATAFILE, PARM1, PARM2, PARM3 );  {ignore parm4,5}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      70
+
+
+        9.13  RESET
+
+        RESET( Filvar )
+
+             The  Reset  procedure is used to open an existing disk  file 
+        for  input or output operations.   An Assign procedure must  have 
+        been  used  before Reset to assign a disk file name  or  standard 
+        file with the file variable.  Reseting a file variable to which a 
+        standard file has been assigned is treated as a null operation.
+
+             If  a  disk file is not found by  Reset,  a  run-time  error 
+        occurs.
+
+             
+             RESET( F2 );
+
+             RESET( DATAFILE );
+
+             RESET( TEXTFILE );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      71
+
+
+        9.14  REWRITE
+
+        REWRITE( Filvar )
+
+             The  Rewrite procedure is used to create a new disk file for 
+        output and input.  If a disk file with the same file name already 
+        exists, it is deleted before the new file is created.
+
+             An  Assign procedure must have been used before  Rewrite  to 
+        assign  a disk file name or standard file to the  file  variable.  
+        Rewriting  a  file  variable to which a standard  file  has  been 
+        assigned is treated as a null operation.
+
+             If the disk directory is full, a run-time error occurs.
+
+
+             REWRITE( F4 );
+
+             REWRITE( REPORTFILE );
+
+             REWRITE( DATAFILE );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      72
+
+
+        9.15  SEEK         (Non-Standard Feature)
+
+        SEEK( Filvar, N )
+
+             The  Seek  procedure positions the file pointer at  the  Nth 
+        component of the file.  The first component is number 0.  It is a 
+        compiler error if the file variable is a textfile.
+
+             Seek is used for random access file processing.
+
+
+             SEEK( F1, INDEX );
+
+             SEEK( DOSSIER, AGENTNUM );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      73
+
+
+        9.16  WRITE
+
+        WRITE( variable_list )
+
+        WRITE( Filvar, variable_list )
+
+             The  Write  procedure  is used to output data  values  to  a 
+        textfile or non-textfile.   If no file variable is specified, the 
+        OUTPUT file is assumed.  If the file is a textfile then integers, 
+        reals and Booleans are automatically converted to text format.
+
+
+
+             WRITE('Enter longitude, latitude of target : ');
+
+             WRITE( REPORTFILE, CHR(9), 'SALES SUMMARY FOR ',MONTH );
+
+             WRITE( MODEM, SIGNON );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+        Mystic Pascal  User Manual                                      74
+
+
+        9.17  WRITELN
+
+        WRITELN
+
+        WRITELN( variable_list )
+
+        WRITELN( Filvar )
+
+        WRITELN( Filvar, variable_list )
+
+
+             The  Writeln  procedure is similar to Write but may only  be 
+        applied to textfiles.   After the variables on the list have been 
+        output,  a standard end-of-line byte sequence is output.  This is 
+        (carriage_return, line_feed) 13, 10.
+
+
+
+             PROCEDURE SKIP ( X : INTEGER );
+             VAR I : INTEGER;
+             BEGIN
+             IF (X > 0) AND (X <= 60) THEN
+                  FOR I := 1 TO X DO WRITELN 
+             END;
+
+             
+             WRITELN( F1 );
+
+             WRITELN( F1, X, Y, Z );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 9:   Input/Output
+
+
