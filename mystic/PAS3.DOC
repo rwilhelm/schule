@@ -1,0 +1,230 @@
+
+        Mystic Pascal  User Manual                                      18
+
+
+        5.  System Display
+
+             The  System  Display screen contains  technical  information 
+        about  the  current  state of the  Mystic  Pascal  system.   This 
+        information is useful in storage allocation with the installation 
+        program and when working with multi-tasking programs.
+
+             This  screen  displays  the current  time-of-day  (The  PC's 
+        onboard  clock  should  be correctly set.) and the  elapsed  time 
+        since  Pascal  was started.   A storage map and a  table  of  the 
+        currently  active  processes  are also  displayed.   The  Display 
+        Screen  is  updated approximately once every second  when  it  is 
+        being displayed. 
+
+
+
+
+        5.1  Storage Map
+
+             The storage map shows the several main storage areas used by 
+        Mystic Pascal.   The starting address of each area is shown as an 
+        absolute  20 bit (5 hex digit) number.   This information can  be 
+        useful  when  using  the Install program to  modify  the  storage 
+        configuration. 
+
+        User Area
+
+             The  user  area is reserved for variables  declared  in  the 
+        user's  program.   Both  global variables and  procedures'  local 
+        variables  are  allocated  in  this  region.   Pointer  variables 
+        allocated  with the NEW procedure are placed in Dynamic  Storage, 
+        not here.
+
+        Laser
+
+             The  large  area code-named "Laser"  contains  the  internal 
+        symbolic  representation of the Pascal program.   Compiled object 
+        code  and dynamic variables allocated with the NEW procedure  are 
+        also  stored here.   The Laser may be up to a maximum of 640K  in 
+        size.   The percent of this area which is currently allocated  is 
+        displayed.
+
+        Dynamic Storage
+
+             Queue  messages and various system control blocks are stored 
+        in  this area.   Dynamic storage may be up to 60K in  size.   The 
+        percent of this area which is currently allocated is displayed.
+
+
+
+
+
+        Section 5:   System Display
+
+        Mystic Pascal  User Manual                                      19
+
+
+        Feature Buffer
+
+             This buffer is used by the advanced feature support.
+
+        Screen Buffers
+
+             The  non-displayed  CRT  screens are stored in  this  buffer 
+        area.
+
+        Optimizer Buffer
+
+             The  optimizer  stores object code in this area  during  its 
+        processing.
+
+        System Stack
+
+             This  is the 8086 stack segment.   A separate stack area  is 
+        maintained for each concurrently executing process.
+
+        System Data
+
+             This is the main 8086 data segment.  
+
+        System Code
+
+             This  is  the 8086 code segment containing the  nucleus  and 
+        compiler assembly code.
+
+        Program Segment Prefix
+
+             This  100H byte area is setup by DOS when Mystic  Pascal  is 
+        started.   It  contains DOS system data areas and is not directly 
+        used by Mystic Pascal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 5:   System Display
+
+        Mystic Pascal  User Manual                                      20
+
+
+        5.2  Process Control Table
+
+             This  is a display of the process control blocks  (PCB)  for 
+        each   process  currently  allocated.    Seven  data  fields  are 
+        displayed.
+
+             The  nucleus'  process manager maintains  a  "pseudo-timer".  
+        This  is  a  16 bit counter which  is  incremented  whenever  the 
+        dispatcher  transfers control to another process.   The value  of 
+        the  pseudo-timer is stored in a process control block when  that 
+        process  is  dispatched.   This  provides a very fast  method  of 
+        keeping  track of how recently each process has been  dispatched.  
+        When the pseudo-timer wraps around to 0, all PCB timer fields are 
+        also reset to 0.
+
+             The  dispatcher can use this information to give  preference 
+        to  those processes that have been waiting a relatively long time 
+        for  a  chance to execute.   Each process is  assigned  a  static 
+        priority  which is also considered by the dispatcher in selecting 
+        a ready process.
+
+        Process
+             Name of the process.
+
+        St
+             Process current state
+                  P = Pascal process STARTed by user
+                  R = ready
+                  W = waiting for queue message
+
+        Count
+             The number of times the process has been dispatched.
+
+        SP
+             The process's stack pointer.
+
+        Time
+             The pseudo-timer value when the process was last dispatched.
+
+        Pr
+             The  static priority of the process.   This value determines 
+        what proportion of the processor time this process receives if it 
+        is ready to execute.
+
+        Dyn
+             The  dynamic priority of the process.   This value  actually 
+        determines  which ready process will be  next  dispatched.   This 
+        value is equal to:  
+
+                  static_priority + (current_pseudo_timer - time)
+
+
+        Section 5:   System Display
+
+        Mystic Pascal  User Manual                                      21
+
+
+        6.  Help Windows
+
+             The  Help  facility  is included in Mystic  Pascal  to  make 
+        learning easier for students and to provide a very fast reference 
+        source for experienced Pascal users.  The Help facility is always 
+        available from any screen.  Four function keys are used for help:
+
+             F7   Pascal Language Help
+             F8   Standard Procedures & Functions Help
+             F9   Editor Help
+             F10  Function Key Help
+
+
+             F7  Pascal Language Help
+
+             Function  key F7 will display a menu window showing the Help 
+        windows available.   Enter the letter or number key to select the 
+        topic you want to see.  
+
+             Enter  any character to leave a topic window and  enter  any 
+        non menu character to leave the menu and return to the underlying 
+        screen.
+
+             F8  Standard Procedures & Functions Help
+
+             Function  key F8 displays a menu window showing all  builtin 
+        procedures  and functions.   Enter the letter or number to select 
+        the topic you want to see
+
+             F9   Editor Help
+
+             Function key F9 displays a list of editor commands directly.  
+        Hitting any key will remove the display.
+
+             F10  Function Key Help
+
+             Function  key  F10  displays  a list  of  all  function  key 
+        assignments.   This is only a reminder list.   The other function 
+        keys may not be invoked directly from this display window.
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 6:   Help Windows
+
+
