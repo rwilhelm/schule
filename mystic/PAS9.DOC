@@ -1,0 +1,173 @@
+
+        Mystic Pascal  User Manual                                      79
+
+
+        A.  Error Messages
+
+
+        Identifier  Space Error -- The program being loaded has filled up 
+        the  storage  area reserved for  identifiers.   Run  the  Install 
+        program to increase the amount of Identifier Storage.
+
+        Laser  Space Error -- The program being loaded has filled up  the 
+        Laser storage area.  Run the Install program to increase the size 
+        of the Laser.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Appendix A:   Error Messages
+
+        Mystic Pascal  User Manual                                      80
+
+
+        B.  ASCII Table
+
+
+        00   0   NUL             2B   43   +              56   86   V
+        01   1   SOH             2C   44   ,              57   87   W
+        02   2   STX             2D   45   -              58   88   X
+        03   3   ETX             2E   46   .              59   89   Y
+        04   4   EOT             2F   47   /              5A   90   Z
+        05   5   ENQ             30   48   0              5B   91   [
+        06   6   ACK             31   49   1              5C   92   \
+        07   7   BEL             32   50   2              5D   93   ]
+        08   8   BS              33   51   3              5E   94   ^
+        09   9   HT              34   52   4              5F   95   _
+        0A  10   LF              35   53   5              60   96   `
+        0B  11   VT              36   54   6              61   97   a
+        0C  12   FF              37   55   7              62   98   b
+        0D  13   CR              38   56   8              63   99   c
+        0E  14   SO              39   57   9              64  100   d
+        0F  15   SI              3A   58   :              65  101   e
+        10  16   DLE             3B   59   ;              66  102   f 
+        11  17   DC1             3C   60   <              67  103   g
+        12  18   DC2             3D   61   =              68  104   h
+        13  19   DC3             3E   62   >              69  105   i
+        14  20   DC4             3F   63   ?              6A  106   j
+        15  21   NAK             40   64   @              6B  107   k
+        16  22   SYN             41   65   A              6C  108   l
+        17  23   ETB             42   66   B              6D  109   m
+        18  24   CAN             43   67   C              6E  110   n
+        19  25   EM              44   68   D              6F  111   o
+        1A  26   SUB             45   69   E              70  112   p
+        1B  27   ESC             46   70   F              71  113   q
+        1C  28   FS              47   71   G              72  114   r
+        1D  29   GS              48   72   H              73  115   s
+        1E  30   RS              49   73   I              74  116   t
+        1F  31   US              4A   74   J              75  117   u
+        20  32   space           4B   75   K              76  118   v
+        21  33   !               4C   76   L              77  119   w
+        22  34   "               4D   77   M              78  120   x
+        23  35   #               4E   78   N              79  121   y
+        24  36   $               4F   79   O              7A  122   z
+        25  37   %               50   80   P              7B  123   {
+        26  38   &               51   81   Q              7C  124   |
+        27  39   '               52   82   R              7D  125   }
+        28  40   (               53   83   S              7E  126   ~
+        29  41   )               54   84   T              7F  127   DEL
+        2A  42   *               55   85   U
+
+
+
+
+
+
+        Appendix B:   ASCII Table
+
+        Mystic Pascal  User Manual                                      81
+
+
+        C.  ISO Standard Pascal
+
+             Mystic  Pascal  intends to comply 100% with the  ISO  Pascal 
+        Standard  Level  0.   This is essentially identical to  the  ANSI 
+        Pascal  Standard.   The  British  Standard  Institute's  official 
+        Pascal  Validation  Suite is used to test  compliance  of  Mystic 
+        Pascal with the ISO Standard.
+
+             For  several years there has been a vigorous debate over the 
+        Pascal Standard and various non-standard compilers.  The language 
+        purists  insist that every Pascal compiler comply perfectly  with 
+        the ISO Standard.   The primary reason is to promote  portability 
+        of Pascal programs among the many types of computers.  
+
+             On  the other side are those who argue that the basic Pascal 
+        Standard  lacks many important features such as string  handling, 
+        random  file  access  and  separate  compilation  and   therefore 
+        extensions are necessary for all but the simplest programs.  
+
+             Thankfully,  the  ISO  Standard offers an escape  from  this 
+        dilemma,  although  one  that  increases the  complexity  of  the 
+        compiler.    A  compiler  may  offer  extensions  and  still   be 
+        considered  standard  if those extensions are documented  and  if 
+        they  may be switched off.   This is the path that Mystic  Pascal 
+        takes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Appendix C:   ISO Standard Pascal
+
+
