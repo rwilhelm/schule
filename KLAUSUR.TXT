@@ -1,0 +1,19 @@
+-=INFORMATIKKLAUSUR AM FREITAG=-
+________________________________
+
+programme deuten (kommentare)
+auf papier coden
+
+textdateien (text)   -->(-assign, rewrite, reset, close, write, read, writeln, readln-)
+
+verbund (record) / (record definieren können / datei mit record anlegen) [with]
+
+typisierte dateien (file of ...) / (siehe 'cd-verwaltung') (-assign, rewrite, reset, close, write, read, seek, filesize(...)-)
+
+rekursion/iteration (einfache beispiele)
+
+math. problemlösungen (primzahlen prüfen, tabelle der primzahlen) [MOD, DIV, TRUNC(...)]
+
+-
+
+dateien lesen, schreiben, auslesen edtc.
