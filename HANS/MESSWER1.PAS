@@ -1,0 +1,84 @@
+program Array_Demo; {demonstriert den Datentyp: eindimensionales Feld}
+
+   {hans@lugg.de 09/01/99
+              nach einer Idee von Daniel Christophis am 20.08.99
+              und Hilfe von Herrn Nissel }
+
+uses crt;                     
+var k: integer;
+    zahl: array[1..10] of real;
+    summe: real;
+    datei: text;          { Programmkopf: globale Variable }
+
+procedure weiter; {keypressed}
+begin;
+writeln('Bitte eine beliebige Taste drÅcken um fortzufahren');
+repeat until keypressed
+end;              {keypressed}
+
+
+
+procedure eingabe_von_messwerten;
+var k : integer; { lokale Variable }
+begin
+   clrscr;
+   writeln('Programm zur Erfassung von 10 reellen Zahlen');
+   for k:=1 to 10 do begin
+                        write('Zahl=');
+                        readln(zahl[k]);
+                     end;
+   weiter;
+end;   { eingabe_von_messwerten }
+
+procedure auswertung;
+begin
+  summe:=0;
+   for k:=1 to 10 do summe:=summe+zahl[k];
+   writeln('Gesamte Summe:',summe:10:2);
+   weiter;
+end;   { auswertung }
+
+
+procedure speichern;
+begin
+   assign(datei,'C:\tp-dos\hans\tabelle.txt');
+   rewrite(datei);
+   for k:=1 to 10 do writeln(datei, zahl[k]);
+   close(datei);
+   writeln('Die Zahl wurde in der Datei "Tabelle.txt" auf dem Laufwerk gespeichert');
+   weiter;
+end; { speichern }
+
+procedure programmende;
+begin
+    weiter;
+end;
+
+procedure menue;
+var taste : char;
+begin
+   repeat {aÅ·ere Schleife}
+   clrscr; write('Programm zum Erfassen, Auswerten und Speichern von Me·werten');
+
+   gotoxy(10,5);  write ('Erfassen von Me·werten ..... 1');
+   gotoxy(10,6);  write ('Auswertung von Messwerten....2');
+   gotoxy(10,7);  write ('Speichern von Messwerten.....3');
+   gotoxy(10,10); write ('Programmende................ 4');
+   gotoxy(10,12); write ('Ihre Wahl ..................');
+
+   repeat taste := readkey until taste IN ['1','2','3','4']; {innere Schleife}
+                                  ;
+      clrscr;
+      CASE taste OF
+         '1': eingabe_von_messwerten;
+         '2': auswertung;
+         '3': speichern;
+         '4': programmende;
+      end; {case}
+   until taste = '4'; {Ñu·ere schleife ende}
+
+end; {menue}
+
+begin      { Main }
+    menue;
+end.
