@@ -1,0 +1,778 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			M Y S T I C   P A S C A L
+
+				U S E R
+
+			      M A N U A L
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						Mystic Canyon Software
+						P.O.Box 1010
+						Pecos, New Mexico 87552
+						(505) 757-6344
+
+
+
+             Trust in the Lord with all your heart,
+                  on your own intelligence rely not;
+             In all your ways be mindful of him,
+                  and he will make straight your paths.
+
+                                         Proverbs 3:5-6
+
+             The beginning of wisdom is the fear of the Lord,
+                  and knowledge of the Holy One is understanding.
+
+                                         Proverbs 9:10
+
+             Toil not to gain wealth,
+                  cease to be concerned about it;
+             While your glance flits to it, it is gone!
+                  for assuredly it grows wings,
+                  like the eagle that flies toward heaven.
+
+                                         Proverbs 23:4-5
+
+             He who obeys the commandments he has from me
+                  is the man who loves me;
+             and he who loves me will be loved by my Father.
+             I too will love him and reveal myself to him.
+
+                                         John 14:21
+
+             No sooner had he said this than he was lifted up
+             before their eyes in a cloud which took him from
+             their sight.
+
+                                         Acts 1:9
+
+             From about half past ten in the evening to
+             about half an hour after midnight.
+                  Fire.
+             God of Abraham, God of Isaac, God of Jacob,
+             Not the God of philosophers and scholars.
+             Absolute Certainty: Beyond reason. Joy. Peace.
+             Forgetfulness of the world and everything but God.
+             The world has not known Thee, but I have known Thee.
+                  Joy! joy! joy! Tears of joy!
+
+                                         Blaise Pascal
+                                         -- from a scrap of paper found
+                                            sewn up in his doublet after
+                                            his death.
+
+
+                                   COPYRIGHT
+
+                      Copyright   1986  by  Mystic  Canyon Software.
+                      All rights reserved. Version 1.5 is released to
+                      shareware and may be copied and distributed,
+                      provided the following conditions are met:
+                      transcribed,  stored  in a retrieval
+                      system,   or  translated  into   any
+                      language  or computer  language,  in
+                      any    form   or   by   any   means,
+                      electronic,   mechanical,  magnetic,
+                      optical,    chemical,    manual   or
+                      otherwise, without the prior written
+                      permission    of    Mystic    Canyon
+                      Software,  P.O.Box 1010,  Pecos, New
+                      Mexico 87552.
+
+
+                                   DISCLAIMER
+
+                      Mystic  Canyon  Software  makes   no
+                      representations  or warranties  with
+                      respect  to the contents hereof  and
+                      specifically  disclaims any  implied
+                      warranties   of  merchantability  or
+                      fitness for any particular  purpose.
+                      Further,   Mystic   Canyon  Software
+                      reserves  the right to  revise  this
+                      publication and to make changes from
+                      time  to time in the content  hereof
+                      without  obligation of Mystic Canyon
+                      Software  to  notify any  person  of
+                      such revision or changes.
+
+
+
+                                   TRADEMARKS
+
+                      Mystic  Pascal  is  a  trademark  of
+                      Mystic Canyon Software.  Wordstar is
+                      a  registered trademark of  MicroPro
+                      International Corp.
+
+
+        Mystic Pascal  User Manual                                      1
+
+
+
+        1.  Introduction. . . . . . . . . . . . . . . . . . . . .   4
+             1.1  Overview of Mystic Pascal . . . . . . . . . . .   6
+             1.2  System Requirements . . . . . . . . . . . . . .   8
+             1.3  List of Files . . . . . . . . . . . . . . . . .   8
+             1.4  Replacement Disks . . . . . . . . . . . . . . .   8
+
+        2.  Operating Mystic Pascal . . . . . . . . . . . . . . .   9
+             2.1  Starting Mystic Pascal. . . . . . . . . . . . .  10
+             2.2  Screens . . . . . . . . . . . . . . . . . . . .  11
+
+        3.  Full Screen Editor. . . . . . . . . . . . . . . . . .  12
+             3.1  Loading and Saving Pascal Programs. . . . . . .  13
+             3.2  Entering a New Pascal Program . . . . . . . . .  13
+             3.3  Editing Commands. . . . . . . . . . . . . . . .  14
+                  3.3.1  Cursor Movement Commands . . . . . . . .  14
+                  3.3.2  Scroll Commands. . . . . . . . . . . . .  14
+                  3.3.3  Insert and Delete Commands . . . . . . .  14
+             3.4  Compiling a Pascal Program. . . . . . . . . . .  15
+             3.5  EXE File Create . . . . . . . . . . . . . . . .  15
+
+        4.  Direct Mode . . . . . . . . . . . . . . . . . . . . .  16
+             4.1  Case Control. . . . . . . . . . . . . . . . . .  16
+             4.2  Video Snow. . . . . . . . . . . . . . . . . . .  17
+             4.3  Intermediate Code Listing . . . . . . . . . . .  17
+             4.4  Clear Screen Command. . . . . . . . . . . . . .  17
+
+        5.  System Display. . . . . . . . . . . . . . . . . . . .  18
+             5.1  Storage Map . . . . . . . . . . . . . . . . . .  18
+             5.2  Process Control Table . . . . . . . . . . . . .  20
+
+        6.  Help Windows. . . . . . . . . . . . . . . . . . . . .  21
+
+        7.  Multi-tasking Support . . . . . . . . . . . . . . . .  22
+             7.1  Message Passing . . . . . . . . . . . . . . . .  23
+             7.2  START . . . . . . . . . . . . . . . . . . . . .  24
+             7.3  PRIORITY. . . . . . . . . . . . . . . . . . . .  25
+             7.4  QUEUE . . . . . . . . . . . . . . . . . . . . .  26
+             7.5  SEND. . . . . . . . . . . . . . . . . . . . . .  27
+             7.6  RECEIVE . . . . . . . . . . . . . . . . . . . .  28
+
+        8.  Procedures and Functions. . . . . . . . . . . . . . .  29
+             8.1  ABS . . . . . . . . . . . . . . . . . . . . . .  30
+             8.2  ARCTAN. . . . . . . . . . . . . . . . . . . . .  31
+             8.3  CHR . . . . . . . . . . . . . . . . . . . . . .  32
+             8.4  COS . . . . . . . . . . . . . . . . . . . . . .  33
+             8.5  DISPOSE . . . . . . . . . . . . . . . . . . . .  34
+             8.6  EXP . . . . . . . . . . . . . . . . . . . . . .  35
+             8.7  FLOAT . . . . . . . . . . . . . . . . . . . . .  36
+             8.8  FRACTION. . . . . . . . . . . . . . . . . . . .  37
+
+
+        Table of Contents
+
+        Mystic Pascal  User Manual                                      2
+
+
+             8.9  INTR. . . . . . . . . . . . . . . . . . . . . .  38
+             8.10  INTSTR . . . . . . . . . . . . . . . . . . . .  39
+             8.11  LN . . . . . . . . . . . . . . . . . . . . . .  40
+             8.12  NEW. . . . . . . . . . . . . . . . . . . . . .  41
+             8.13  ODD. . . . . . . . . . . . . . . . . . . . . .  43
+             8.14  OFFSET . . . . . . . . . . . . . . . . . . . .  44
+             8.15  ORD. . . . . . . . . . . . . . . . . . . . . .  45
+             8.16  PACK and UNPACK. . . . . . . . . . . . . . . .  46
+             8.17  PRED . . . . . . . . . . . . . . . . . . . . .  47
+             8.18  REALSTR. . . . . . . . . . . . . . . . . . . .  48
+             8.19  ROUND. . . . . . . . . . . . . . . . . . . . .  49
+             8.20  SEGMENT. . . . . . . . . . . . . . . . . . . .  50
+             8.21  SIN. . . . . . . . . . . . . . . . . . . . . .  51
+             8.22  SQR. . . . . . . . . . . . . . . . . . . . . .  52
+             8.23  SQRT . . . . . . . . . . . . . . . . . . . . .  53
+             8.24  STRINT . . . . . . . . . . . . . . . . . . . .  54
+             8.25  STRREAL. . . . . . . . . . . . . . . . . . . .  55
+             8.26  SUCC . . . . . . . . . . . . . . . . . . . . .  56
+             8.27  TRUNC. . . . . . . . . . . . . . . . . . . . .  57
+             8.28  UPCASE . . . . . . . . . . . . . . . . . . . .  58
+
+        9.  Input/Output. . . . . . . . . . . . . . . . . . . . .  59
+             9.1  File Variables. . . . . . . . . . . . . . . . .  60
+             9.2  Standard Files. . . . . . . . . . . . . . . . .  60
+             9.3  How to Send Data to Your Printer. . . . . . . .  60
+             9.4  ASSIGN. . . . . . . . . . . . . . . . . . . . .  61
+             9.5  CLOSE . . . . . . . . . . . . . . . . . . . . .  62
+             9.6  EOF . . . . . . . . . . . . . . . . . . . . . .  63
+             9.7  EOLN. . . . . . . . . . . . . . . . . . . . . .  64
+             9.8  GET, PUT and Buffer Variables . . . . . . . . .  65
+             9.9  IORESULT. . . . . . . . . . . . . . . . . . . .  66
+             9.10  PAGE . . . . . . . . . . . . . . . . . . . . .  67
+             9.11  READ . . . . . . . . . . . . . . . . . . . . .  68
+             9.12  READLN . . . . . . . . . . . . . . . . . . . .  69
+             9.13  RESET. . . . . . . . . . . . . . . . . . . . .  70
+             9.14  REWRITE. . . . . . . . . . . . . . . . . . . .  71
+             9.15  SEEK . . . . . . . . . . . . . . . . . . . . .  72
+             9.16  WRITE. . . . . . . . . . . . . . . . . . . . .  73
+             9.17  WRITELN. . . . . . . . . . . . . . . . . . . .  74
+
+        10. MYSTICIN Installation Program . . . . . . . . . . . .  75
+
+        11. Programming Notes . . . . . . . . . . . . . . . . . .  76
+
+
+
+
+
+
+
+
+
+        Table of Contents
+
+        Mystic Pascal  User Manual                                      3
+
+
+        Appendixes
+
+        A.  Error Messages. . . . . . . . . . . . . . . . . . . .  79
+
+        B.  ASCII Table . . . . . . . . . . . . . . . . . . . . .  80
+
+        C.  ISO Standard Pascal . . . . . . . . . . . . . . . . .  81
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Table of Contents
+
+        Mystic Pascal  User Manual                                      4
+
+
+        1.  Introduction
+
+             Mystic  Pascal is an integrated programming environment  for
+        the IBM Personal Computer and compatibles.  Mystic Pascal rigidly
+        follows the ISO Pascal Standard.
+
+             Before  the IBM PC,  most personal computers were limited to
+        64K of main storage.   Now most machines have 256K to 640K.  Soon
+        most computers will have 640K or more.  Newer machines will allow
+        up to 16 megabytes.   (In March 1975 we purchased an Altair  8800
+        computer kit with 256 bytes of storage.)
+
+             This  trend  to  larger memories permits major  advances  in
+        software.   Business  programs have evolved from word  processors
+        and spreadsheets to "integrated software systems" - single  large
+        programs  combining many functions.
+
+             Mystic  Pascal  combines  editing,   compiling  and  program
+        testing  and debugging in one unit.   The traditional pattern  of
+        program  development - the edit/compile/test cycle  - is  greatly
+        speeded  up with an integrated programming environment.   You  do
+        not  need  to  return  to the operating system  and  reload  each
+        program  at  each  phase  of the  cycle.
+
+             Mystic  Pascal  is an "interactive  compiler".   Mystic  can
+        compile entire Pascal source files like previous Pascals.  But it
+        also allows Pascal statements to be keyed in,  instantly compiled
+        and executed at the global level.   This is similar to the Direct
+        Mode of Basic interpreters,  with a critical difference -- Mystic
+        Pascal is a true object code compiler.   It is not an interpreter
+        or a pseudo-code compiler.
+
+             The  Mystic  Pascal  compiler  is based on  a  new  type  of
+        compiler technology.   First, it is a multi-tasking compiler that
+        runs in the background while you are editing or doing other work.
+        Second,  it is an incremental compiler.   If you are working on a
+        5000 line program and modify 3 lines,  it only needs to recompile
+        those   three   lines.    If  those  lines   contained   variable
+        declarations,   it  will  also  recompile  lines  of  code  which
+        referenced  those  variables.   It keeps track of all  references
+        within  the  program.   Third,  Mystic Pascal  is  an  optimizing
+        compiler.
+
+
+
+
+
+
+
+
+
+
+        Section 1:   Introduction
+
+        Mystic Pascal  User Manual                                      5
+
+
+             The  highest  priority  in the design of Mystic  Pascal  was
+        speed  - both compilation speed and execution  speed.   Here  are
+        some of Mystic Pascal's major features:
+
+        -- ISO Standard Pascal Level 0  (Mystic Pascal version 1.6)
+
+        -- True 8086 object code compiler
+
+        -- Two level optimization
+
+        -- Immediate compilation and execution of global Pascal
+        statements
+
+        -- Full screen editor
+
+        -- Help windows support full Pascal language
+
+        -- Multi-tasking support
+
+        -- Multiple video screens are maintained
+
+        -- Program code up to 1 megabyte
+
+        -- Program data up to 1 megabyte
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 1:   Introduction
+
+        Mystic Pascal  User Manual                                      6
+
+
+        1.1  Overview of Mystic Pascal
+
+             This  is a technical overview of Mystic  Pascal.  Users  who
+        have  no interest in the internal structure of the system  should
+        skip this section.
+
+             Mystic Pascal is an integrated programming environment.   It
+        has several major components:
+
+             -- full screen editor
+             -- direct mode
+             -- system display
+             -- compiler
+             -- help facility
+             -- nucleus
+
+        Nucleus
+
+             The  nucleus is an operating system extension which adds  an
+        extra  layer  of functions to PC-DOS.   It does not  replace  any
+        existing  DOS functions.   Many nucleus functions are accessed by
+        interrupt vectors.  The nucleus supports these major functions:
+
+             -- process management - multitasking
+             -- queue management for interprocess communication
+             -- dynamic storage management
+             -- video screen management and window support
+
+             Each  of the major system components is a separate  process.
+        The components execute concurrently and may communicate with each
+        other  through  message queues.   Some processes have  their  own
+        video  screens.   The  user may switch among several screens  via
+        function  key 1 (F1).   The screens not currently  displayed  are
+        stored in buffers.
+
+             Keyboard  input  is  routed to the  keyboard  queue  of  the
+        process  which  owns the currently displayed video  screen.   The
+        process  may  read this queue as it needs  input.   Some  special
+        keyboard inputs are intercepted by the nucleus and are not passed
+        on to active processes - F1 is one example.
+
+        Full Screen Editor
+
+             A  full  screen editor allows the user to enter  new  Pascal
+        programs and modify existing ones.  From the editor screen Pascal
+        source files may be loaded from and saved to disk.   The compiler
+        is also invoked from the editor screen via F2.
+
+
+        Compiler
+
+
+        Section 1:   Introduction
+
+        Mystic Pascal  User Manual                                      7
+
+
+
+             The  compiler  translates Pascal source programs  into  8086
+        object  code.   The  ISO  Standard Pascal  Level  0  language  is
+        supported.
+
+             Besides compiling entire programs, single statements entered
+        in  the  Direct  Mode  screen may  be  compiled  and  immediately
+        executed.
+
+        Direct Mode
+
+             In the Direct Mode screen, Pascal statements may be directly
+        entered.   These  will be instantly compiled and executed.   This
+        advanced feature allows interactive or exploratory programming in
+        a style similar to the Lisp and Forth languages.
+
+        System Display
+
+             The  System  Display screen shows the current system  status
+        and  time of day.   A storage map and a table of process  control
+        blocks are formatted.   The display is updated approximately once
+        per second.
+
+        Help Facility
+
+             The  Help  facility  process  displays  the  Help  menus  in
+        windows and loads Help text from the system library.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 1:   Introduction
+
+        Mystic Pascal  User Manual                                      8
+
+
+        1.2  System Requirements
+
+             Mystic Pascal requires 256K or more of main storage and  DOS
+        2.0 or higher.  Because Mystic Pascal directly accesses the video
+        storage  buffers,  accesses  the  ROM  BIOS,  modifies  interrupt
+        vectors and uses the 18 Hz timer,  it may not function  correctly
+        on IBM compatibles that are less than 100% compatible.
+
+
+        1.3  List of Files
+
+             The  first thing you should do is make a backup copy of  the
+        master disk.  Do not use the master disk as your working disk.
+
+             The  master  disk  does  not contain a copy  of  the  PC-DOS
+        operating  system which is proprietary software.   Do not try  to
+        boot up the master disk.
+
+             MYSTIC.EXE     The Pascal compiler system
+             MYSTIC.LIB     Library of messages and help windows
+             MYSTICIN.EXE   System installation program
+             TUTOR.PAS      Mystic Pascal tutorial program
+             TUTOR.DOC      Instructions for running TUTOR
+             PROBLEM.FRM    Problem report form
+
+
+        1.4  Replacement Disks
+
+             After receiving Mystic Pascal, the first thing you should do
+        is  backup the master disk.  Do not use the master disk for  your
+        working disk.
+
+             If you suspect that your master disk is damaged, try to copy
+        the  files  to  another disk using the COPY command  rather  than
+        DISKCOPY.   DISKCOPY copies the entire disk and would report  all
+        errors  found  even  if the bad section of the disk  contains  no
+        files.
+
+             If you are certain that your master disk is damaged and  not
+        recoverable,  we can provide a replacement.  Pack the disk up and
+        ship  it back to us.   We must have the original master before we
+        will ship the replacement.  There is no charge for replacement if
+        you return it within 15 days of receiving the package.   If it is
+        beyond 15 days, include $10.00 to cover shipping and processing.
+
+             Also include a note indicating:
+
+                  -- description of the problem, any error messages
+                  -- type of computer
+                  -- current shipping address
+
+
+        Section 1:   Introduction
+
+        Mystic Pascal  User Manual                                      9
+
+
+        2.  Operating Mystic Pascal
+
+             Mystic  Pascal  is an "integrated programming  environment."
+        This  means  that  it  combines  in  one  large  program  several
+        components  that  were generally implemented as  several  smaller
+        programs in earlier Pascals.
+
+             The first component is the compiler itself which  translates
+        Pascal  source  programs  into  8086  object  code.   The  second
+        component  is  the  full screen editor which is  used  to  modify
+        existing Standard Pascal programs or to create new ones.
+
+             Another  component  is the Direct Mode processor.   This  is
+        similar  to Direct Mode in a Basic interpreter.   You  can  enter
+        Pascal  statements  and  they  will  be  instantly  compiled  and
+        executed  and  any  output will be  displayed  immediately.   For
+        example,  if  your  main  Pascal program has  declared  a  global
+        variable X1 as an Integer, you could enter in Direct Mode:
+
+             X1 := 75           {the value 75 is now stored in X1}
+
+             WRITELN( SQR(X1) ) {the square of 75 is displayed   }
+
+             READ(INFILE, VALUE);  WRITELN(VALUE)  {multiple statements}
+
+             TUTOR              {run a main program named TUTOR}
+
+             In  Direct Mode,  you may enter any legal Pascal  statement.
+        The  statement(s) you enter are inserted into a hidden  anonymous
+        procedure,  this  procedure  is compiled and  then  called.   The
+        procedure is compiled as if it were placed immediately before the
+        main  program BEGIN block -- you can access all global variables,
+        procedures  and  functions.    Local  variables,  procedures  and
+        functions may not be directly accessed from Direct Mode.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 2:   Operating Mystic Pascal
+
+        Mystic Pascal  User Manual                                      10
+
+
+        2.1  Starting Mystic Pascal
+
+             If  you have not already done so,  you should make a  backup
+        copy of the Mystic Pascal master disk now.
+
+             Mystic  Pascal  may be placed on any diskette or  hard  disk
+        drive.   MYSTIC.EXE is the main compiler system file.   To  start
+        Pascal enter:
+
+             MYSTIC
+
+             If MYSTIC.EXE is not on your currently logged disk, then you
+        must include a disk letter prefix.  For example, if MYSTIC.EXE is
+        on your C: disk and you are logged into the A: disk, enter:
+
+             C:MYSTIC
+
+             When the compiler is starting up,  it must locate the system
+        library file MYSTIC.LIB.  It looks for the library on the current
+        disk.  If it does not find it there, it asks you on which disk it
+        is located.
+
+             When Mystic Pascal starts it will display the opening screen
+        and then go to the editor screen.  From the editor screen you can
+        load  a Pascal program (function key 2) or go to any other screen
+        (function key 1).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 2:   Operating Mystic Pascal
+
+        Mystic Pascal  User Manual                                      11
+
+
+        2.2  Screens
+
+             Mystic  Pascal maintains multiple video screens.   The  term
+        "screen"  refers  to  a  complete video page of  25  rows  by  80
+        columns.   The  term  "window"  refers to a  smaller  rectangular
+        section of a screen.
+
+             Some   major   components  of  the  integrated   programming
+        environment have their own screens.   The Editor and Direct  Mode
+        processor  are two examples.   If you were working in the editor,
+        you could switch to Direct Mode, do some work in that screen, and
+        then return to the editor screen.   It would appear exactly as it
+        did when you left it.
+
+             Screens  which  are not currently displayed  are  stored  in
+        buffers in main storage.  The cursor position is also saved.
+
+             Function key 1 (F1) is used to switch between screens.  When
+        you press F1,  a small menu window appears on the current screen.
+        The   name  of  the  current  screen  is  flashing  or  otherwise
+        indicated.   You  then press another function key to  select  the
+        screen you want to go to.  If you press any key not listed on the
+        menu the screen switch operation is cancelled.
+
+                       Screen Selection
+
+                       F1  Editor
+                       F2  Direct Mode
+                       F3  System Display
+                       F4  Laser Display
+
+                       Ctrl-End   Exit
+
+             When  the  screen selection menu is displayed you  may  also
+        enter  Ctrl-End  to  terminate Mystic Pascal and return  to  DOS.
+        Your programs and data will not be automatically saved.
+
+             The  colors of the screens and help windows may be  modified
+        by the Mysticin installation program.   Also IBM Color card video
+        "snow" may be suppressed.
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 2:   Operating Mystic Pascal
+
+
