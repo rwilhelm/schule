@@ -1,0 +1,61 @@
+PROGRAM cdstore;        {24. oktober 1999}
+
+uses crt;
+CONST   maxzahl   = 5;
+TYPE    tcd       = RECORD       {BEGIN: RECORD}
+        nr        : integer;
+        titel     : string[80];
+        interpret : string[80];
+        genre     : string[20];
+        wertung   : byte;
+        verliehen : boolean;
+        ausleiher : string[40];
+        END;                     {END: RECORD}
+
+VAR     cd        : tcd;
+        datei     : FILE OF tcd; {typisierte datei}
+
+
+--------------------------------------------------------------------------------
+
+PROCEDURE balken (code: byte);   {BEGIN: balken}
+VAR k : byte;
+BEGIN
+  FOR k := 1 TO 80 DO write (chr(code));
+END;                             {END: balken}
+
+--------------------------------------------------------------------------------
+
+PROCEDURE taste;                 {BEGIN: taste}
+VAR k : integer;
+BEGIN
+  gotoxy (1,24);
+  writeln ('irgendeine taste drueken um weiterzumachen...');
+  REPEAT UNTIL keypressed;
+END;                             {END: taste}
+
+--------------------------------------------------------------------------------
+
+PROCEDURE mainscreen;            {BEGIN: mainscreen}
+BEGIN
+  textcolor      (lightgreen);
+  textbackground (black);
+  clrscr;
+  gotoxy (1,1);  writeln ('AUDIO-CD-ARCHIVIERUNGS-PROG by [cia] 2rok');
+  gotoxy (1,2);  balken (176);
+  gotoxy (1,23); balken (176);
+  gotoxy (1,24);
+END;                             {END: mainscreen}
+
+--------------------------------------------------------------------------------
+
+PROCEDURE cd_ausgabe (VAR eintrag : tcd) {BEGIN: cd_ausgabe}
+BEGIN
+  WITH eintrag DO
+    BEGIN
+      gotoxy (10,10); write ('cd #     :              ', nr);
+      gotoxy (10,12); write ('titel    :              ', titel);
+      gotoxy (10,14); write ('interpret:              ', interpret);
+      gotoxy (10,16); write ('genre    :              ', genre);
+      gotoxy (10,18); write ('wertung  :              ', wertung);
+
