@@ -1,0 +1,1712 @@
+
+        Mystic Pascal  User Manual                                      29
+
+
+        8.  Procedures and Functions
+
+             This   section  of  the  manual  describes  procedures   and 
+        functions.    Procedures   and   functions  which  are  used   in 
+        Input/Output  processing  are described  in  section  9.   Multi-
+        tasking procedures are described in section 7.
+
+
+                Procedure       Purpose
+                ---------       -------
+                DISPOSE         deallocate dynamic variable 
+        +       INTR            interrupt call
+                NEW             allocate dynamic variable 
+                PACK            unimplemented
+                UNPACK          unimplemented
+
+                Function        Return Value
+                --------        ------------
+                ABS             absolute value
+                ARCTAN          arctangent
+                CHR             convert integer to character
+                COS             cosine
+                EXP             exponential function
+        +       FLOAT           convert integer to real
+        +       FRACTION        fractional part of real
+        +1.6    INTSTR          convert integer to string
+                LN              natural logarithm
+                ODD             test for odd integer
+        +       OFFSET          offset of a variable
+                ORD             convert ordinal to integer
+                PRED            preceding ordinal
+        +1.6    REALSTR         convert real number to string
+                ROUND           convert real number to integer
+        +       SEGMENT         segment of a variable
+                SIN             sine
+                SQR             square
+                SQRT            square root
+        +1.6    STRINT          convert string to integer
+        +1.6    STRREAL         convert string to real number
+                SUCC            succeeding ordinal 
+                TRUNC           convert real number to integer
+        +1.6    UPCASE          convert char to upper case
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      30
+
+
+        8.1  ABS
+
+
+        ABS( expression ) 
+           
+
+             The  ABS standard function returns the absolute value of  an 
+        integer  or real expression.   The result is of the same type  as 
+        the input expression.
+
+        Examples:
+
+                A := ABS( X );
+
+                WRITELN( 'ABSOLUTE VALUE IS',ABS( COS( Y )));
+
+                B := ABS( X + Y / Z );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      31
+
+
+        8.2  ARCTAN
+
+
+        ARCTAN( expression ) 
+
+
+             This  standard function returns the arctangent of a real  or 
+        integer expression.   The result type is real and is expressed in 
+        radians.
+
+
+        Examples:
+
+                WRITELN( ARCTAN( A + 3.14159 ));
+
+                NODE.VALUE := OLDNODE.VALUE + ARCTAN( V );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      32
+
+
+        8.3  CHR
+
+
+        CHR( integer_expression ) 
+
+
+             The  CHR  standard function converts an  integer  expression 
+        into  a  character.   The result type is char.   If  the  integer 
+        expression  is  less than zero or greater than  255,  a  run-time 
+        error occurs.
+
+             CHR  is often used for sending control characters to  output 
+        devices.
+
+
+        Examples:
+
+                WRITE( CHR( 12 ));
+
+                TAB := CHR( 9 );
+
+                CARRIAGERETURN := CHR(13);
+
+                LINEFEED := CHR(10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      33
+
+
+        8.4  COS
+
+
+        COS( expression ) 
+
+
+             The  COS standard function returns the cosine of a  real  or 
+        integer expression whose value is given in radians.   The  result 
+        type is real.
+
+
+        Examples:
+
+                WRITELN( COS( ANGLE ));
+
+                NODE.COSINE := COS( N );
+
+                WRITELN( COS( VELOCITY / CHARGE ));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      34
+
+
+        8.5  DISPOSE
+
+
+        DISPOSE( pointer_variable ) 
+
+              
+             The   DISPOSE  procedure  is  used  to  deallocate   dynamic 
+        variables.  The  pointer_variable addresses a dynamic variable in 
+        dynamic  storage.   After  execution of the procedure  the  space 
+        released is available for other uses.
+           
+             Mystic  Pascal  supports  true dynamic  storage  with  auto-
+        compression.   When  blocks are freed up,  storage  fragmentation 
+        occurs -- unused blocks tend to accumulate.   Because many blocks 
+        tend to be small,  they cannot be immediately reused for  another 
+        purpose.   When  storage  becomes  short an  auto-compression  is 
+        initiated by the Pascal system.  
+
+
+        Example:
+
+                PROCEDURE DISPOSEDEMO;
+                TYPE
+                DYNVAR = ARRAY [1..200] OF CHAR;
+                VAR
+                POINTER : ^DYNVAR;
+                BEGIN
+                NEW( POINTER );  (* ALLOCATE A DYNAMIC VAR *)
+
+                (* DO SOME PROCESSING WITH THE DYNAMIC VAR *)
+
+                DISPOSE( POINTER ); (* FREE UP THE 200 BYTES *)
+                END;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      35
+
+
+        8.6  EXP
+
+
+        EXP( expression ) 
+
+
+        The exponential function computes e to the x power,  where x is a 
+        real or integer expression.  The result type is real.
+
+
+        Examples:
+
+                X := EXP( Y );
+
+                SHIPVELOCITY := EXP( WARPFACTOR );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      36
+
+
+        8.7  FLOAT         (Non-Standard Feature)
+
+
+        FLOAT( integer_expression )
+
+
+             The Float function converts integers to real  numbers.   The 
+        result type is real.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      37
+
+
+        8.8  FRACTION      (Non-Standard Feature)
+
+
+        FRACTION( real_expression )
+
+
+             The  Fraction function returns the fractional part of a real 
+        number.  The result type is real.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      38
+
+
+        8.9  INTR          (Non-Standard Feature)
+
+
+        INTR( interrupt, registers )
+
+
+             The  INTR procedure permits access to DOS and BIOS functions 
+        by  directly  calling  interrupt  routines.    The  standard  DOS 
+        interrupt is number 33.   The interrupt number must be an integer 
+        expression.   The  registers  variable is used to  set  the  8086 
+        registers  on  entry  and they are stored into  the  variable  on 
+        return from the interrupt routine.
+
+             Registers is declared as:
+
+             REGISTERS = RECORD
+                  AX,BX,CX,DX,BP,SI,DI,DS,ES,FLAGS : INTEGER
+                  END;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      39
+
+
+        8.10  INTSTR       (Non-Standard Feature)           ** 1.6 **
+
+             INTSTR( integer )
+
+             The  Intstr function converts an integer to a  string.   The 
+        result type is 
+
+             PACKED ARRAY [1..6] OF CHAR
+
+             The characters are right aligned in the field.
+
+
+             CHART.XAXIS[I] := INTSTR( I * DELTA );
+
+             REPORT.YEAR1 := INTSTR( YR );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      40
+
+
+        8.11 LN
+
+
+        LN( expression ) 
+
+
+             The  LN function computes the natural logarithm of a real or 
+        integer expression.   If the expression is less than or equal  to 
+        zero a run-time error occurs.  The result type is real.
+
+
+        Examples:
+
+                X := LN( Y );
+
+                WRITELN( LN( X + SQR(Y)));
+
+                IF LN( FACTORBETA ) < 0.1 THEN
+                        WRITELN(FACTORBETA);
+
+                A := SQRT( LN(Z));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      41
+
+
+        8.12  NEW
+
+        Format 1
+        NEW( pointer_variable ) 
+
+        Format 2
+        NEW( pointer_variable, tag1,..., tagn ) 
+
+             The NEW procedure allocates new dynamic variables.   A block 
+        of dynamic storage of the required size is obtained.  The block's 
+        indirect address, not its actual address is stored in the pointer 
+        variable.
+
+             After  NEW  has been executed,  the dynamic variable may  be 
+        accessed.   Dynamic variables remain allocated until specifically 
+        deallocated by the DISPOSE procedure.  If a procedure uses NEW to 
+        allocate  a dynamic variable,   that variable  remains  allocated 
+        after the procedure ends.
+          
+             Format  2 contains 1 to n tag fields.   These are the fields 
+        specified in the CASE clause of variant records.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      42
+
+
+        Example:
+
+                (* PROGRAM FRAGMENT TO ALLOCATE A       
+                   LINKED LIST OF VARIABLE LENGTH.      
+                   THE ROOT OF THE LIST IS A GLOBAL     
+                   VARIABLE.  NODES AFTER THE FIRST       
+                   ARE INSERTED BETWEEN THE ROOT AND    
+                   THE FIRST NODE.                      *)
+
+                TYPE
+                NODE =  RECORD
+                        NEXT : INTEGER;
+                        DATA : REAL 
+                        END;
+                VAR
+                ROOT : ^NODE;
+
+                PROCEDURE LINKEDLIST ( COUNT : INTEGER );
+                VAR
+                I : INTEGER;
+                TEMP : ^NODE;
+                BEGIN
+                (* ALLOCATE FIRST NODE *)
+                NEW( ROOT );
+
+                (* SET END_OF_LIST INDICATOR *)
+                ROOT^.NEXT := NIL;
+
+                (* ALLOCATE LINKED LIST *)
+                FOR I := 1 TO COUNT DO
+                        BEGIN
+                        NEW( TEMP );
+                        TEMP^.NEXT := ROOT;
+                        ROOT := TEMP 
+                        END 
+                END; (* LINKEDLIST *)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      43
+
+
+        8.13  ODD
+
+
+        ODD( integer_expression ) 
+
+
+             ODD  is a Boolean function which returns the value  true  if 
+        the integer_expression is odd otherwise it returns false.
+
+             The expression X is odd if (abs(X) mod 2) equals one.
+
+
+        Examples:
+
+                IF ODD(X) THEN  TESTFORPRIME(X);
+
+                IF ODD(I) THEN I:=I+1;
+
+                WRITELN( ODD(Y) );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      44
+
+
+        8.14  OFFSET       (Non-Standard Feature)
+
+
+        OFFSET( variable )
+
+
+             The Offset function returns the offset of a variable.   Used 
+        with the Segment function, this allows passing parameters such as 
+        strings of characters to DOS with the INTR procedure.  The result 
+        type is integer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      45
+
+
+        8.15  ORD
+
+
+        ORD( ordinal_expression ) 
+
+
+             The  ORD  function converts an ordinal value to  an  ordinal 
+        number.  For example, if
+
+             TYPE  DAYS = (SUN,MON,TUE,WED,THU,FRI,SAT);
+
+        then ORD(TUE) is equal to 2.
+
+
+        Example:
+
+                REPEAT
+                  READ(INFILE, CH);
+                  WRITE( CH ) 
+                UNTIL ORD(CH) = 26;     (* EOF CHAR DETECTION *)
+
+                (* ASCII DISPLAY *)
+                FOR CH := ' ' TO 'z' DO
+                        WRITELN( CH, ' = ',ORD(CH));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      46
+
+
+        8.16  PACK and UNPACK
+
+             The  PACK and UNPACK Pascal standard procedures are not used 
+        in Mystic Pascal.   A Pascal program may contain these procedures 
+        but they will be treated as null operations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      47
+
+
+        8.17  PRED
+
+
+        PRED( ordinal_expression ) 
+
+
+             The PRED function is the inverse of the SUCC function.   The 
+        predecessor  function returns the ordinal value that is one  less 
+        than the input expression.  
+
+             The PRED of 8 is 7.  The PRED of 'T' is 'S'.  
+
+
+        Example:
+
+                WRITELN( A, PRED(A) );
+
+                WRITELN( CH, PRED(CH) );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      48
+
+
+        8.18  REALSTR      (Non-Standard Feature)           ** 1.6 **
+
+        REALSTR( real_expression, mode, width, frac );
+
+             The Realstr function converts real numbers to strings.   All 
+        four parameters must always be present.  The mode, width and frac 
+        parameters  are all integer expressions.   Three conversion modes 
+        are available.
+
+        Mode=0   Simple mode  -   no leading blanks,  no trailing  zeros, 
+        exponent field is displayed only if required
+
+        Mode=1   Floating Point mode -  width parameter specifies  result 
+        size.
+
+        Mode=2   Fixed Point mode - width parameter specifies result size 
+        and frac parameter specifies number of fractional digits.
+
+
+
+             EDITAREA := REALSTR( AMOUNT, 2, 10, 4 );
+
+             FIELD4 := REALSTR( TOTAL, 0, 0, 0 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      49
+
+
+        8.19  ROUND
+
+
+        ROUND( real_expression ) 
+
+
+             ROUND   is  a  standard  function  which  converts  a   real 
+        expression  to  an  integer value.   If X >= 0 then  ROUND(X)  is 
+        TRUNC(X + 0.5).  If X < 0 then ROUND(X) is TRUNC(X - 0.5).
+
+             ROUND( 2.5 ) is 3
+             ROUND( -2.5 ) is -3
+          
+             If  the real value is too large to be converted  to  integer 
+        format a run-time error occurs.
+
+
+        Examples:
+
+                INT := ROUND( X + Y );
+
+                TEMPERATURE := ROUND( THERMOMETERREADING );
+            
+                PLOTX := ROUND( X / SCALINGFACTOR );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      50
+
+
+        8.20  SEGMENT      (Non-Standard Feature)
+
+
+        SEGMENT( variable )
+
+
+             The  Segment  function  returns  the segment  address  of  a 
+        variable.   For  global  variables this is the same as  the  User 
+        Area.   For local variables this will be a value inside the  User 
+        Area.    Used  with  the  Offset  function  this  allows  passing 
+        parameters  such  as strings of characters to DOS with  the  INTR 
+        procedure.  The result type is integer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      51
+
+
+        8.21  SIN
+
+
+        SIN( expression ) 
+
+
+             The  SIN  standard  function returns the sine of a  real  or 
+        integer expression whose value is given in radians.   The  result 
+        type is real.
+
+
+        Examples:
+
+                WRITELN( SIN( ANGLE ));
+
+                NODE.SINE := SIN( N );
+
+                WRITELN( SIN( VELOCITY / CHARGE ));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      52
+
+
+        8.22  SQR
+
+
+        SQR( expression ) 
+
+
+             The  SQR standard function computes the square of a real  or 
+        integer  expression.   The result type is of the same type as the 
+        input expression.
+
+
+        Examples:
+
+                WRITELN( 'SQUARE OF X IS ', SQR(X) );
+
+                AREA := SQR( SIDE );
+
+                CIRCLEAREA := PI * SQR( RADIUS );
+
+                ENERGY := MASS * SQR( LIGHTSPEED );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      53
+
+
+        8.23  SQRT
+
+
+        SQRT( expression ) 
+
+
+             This standard function returns the square root of a real  or 
+        integer  expression.   The  result type is real and is  always  a 
+        positive value.   A run-time error occurs if the input expression 
+        is negative.
+
+
+        Examples:
+
+                WRITELN( SQRT( A + 3.14159 ));
+
+                NODE.VALUE := OLDNODE.VALUE + SQRT( V );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      54
+
+
+        8.24  STRINT       (Non-Standard Feature)           ** 1.6 **
+
+        STRINT( string )
+
+             The Strint function converts a string to an integer.  If the 
+        string  does  not contain a valid integer as its first  non-blank 
+        characters, a value of -32768 is returned.
+
+
+             VALUE := STRINT( INPUTSTRING );
+
+             X := STRINT( GETNUM );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      55
+
+
+        8.25  STRREAL      (Non-Standard Feature)           ** 1.6 **
+
+        STRREAL( string )
+
+             The Strreal function converts a string to a real number.  If 
+        the string does not contain a valid real number as its first non-
+        blank characters, a value of -9.999E-30 is returned.
+
+
+             A := STRREAL( TEXTVALUE );
+
+             X := STRREAL( VECTOR[ J ] );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      56
+
+
+        8.26  SUCC
+
+
+        SUCC( ordinal_expression ) 
+
+
+             The  successor function is the inverse of the PRED function.  
+        The SUCC function takes an ordinal value and returns the  ordinal 
+        value one greater.  
+
+             The SUCC of 7 is 8.  The SUCC of 'S' is 'T'.
+
+
+        Example:
+
+                WRITELN( A, SUCC(A) );
+
+                WRITELN( CH, SUCC(CH) );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      57
+
+
+        8.27  TRUNC
+
+
+        TRUNC( real_expression ) 
+
+
+             TRUNC   is  a  standard  function  which  converts  a   real 
+        expression  to an integer value.   The fractional portion of  the 
+        real expression is truncated.
+
+             TRUNC(2.5) is 2
+             TRUNC(-2.5) is -2
+          
+             If  the real value is too large to be converted  to  integer 
+        format a run-time error occurs.
+
+
+        Examples:
+
+                INT := TRUNC( X + Y );
+
+                TEMPERATURE := TRUNC( THERMOMETERREADING );
+
+                PLOTX := TRUNC( X / SCALINGFACTOR );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+        Mystic Pascal  User Manual                                      58
+
+
+        8.28  UPCASE       (Non-Standard Feature)           ** 1.6 **
+
+
+        UPCASE( expression ) 
+
+
+             The  UPCASE  function  is a Mystic  Pascal  extension  which 
+        converts  a char or string expression to upper case.   The result 
+        type is the same as the input expression type.  
+
+
+
+        Examples:
+
+                IF UPCASE( COMMAND ) = 'X' THEN
+                        CMDX;
+
+                WRITE( F1, UPCASE(NAME) );
+
+                READLN( OPTION );
+                IF UPCASE( OPTION ) = 'EXIT' THEN GOTO 99;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 8:  Procedures and Functions
+
+
