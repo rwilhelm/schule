@@ -1,0 +1,61 @@
+TUTOR.DOC
+
+	This file explains how to get started in Mystic Pascal and
+how to run the TUTOR program.
+
+1. Make a backup copy of the entire Mystic Pascal distribution disk.
+Never use the distribution disk to run Pascal.
+
+2. If you are using a non-standard video adapter, you must run the
+MYSTICIN installation program first.  The distribution version of
+Mystic Pascal is setup to run on a standard IBM PC with either a
+color card or monochrome card or both.  MYSTICIN may also be used
+to modify screen colors and video snow suppression.
+
+3. To start Mystic, you need the files MYSTIC.EXE and MYSTIC.LIB.
+Type:
+
+	MYSTIC
+
+4. You are now in the Editor screen.  Now load the TUTOR.PAS program.
+Type:
+	F2		(Function Key 2)
+	L
+	TUTOR.PAS
+
+5. Mystic Pascal has four screens that you can use.  Type F1 to see
+the Screen Selection menu.
+
+	F1	Editor
+	F2	Direct Mode
+	F3	System Display
+	F4	Laser Display
+
+6. Go to the System Display screen by typing F1 to bring up the menu
+and then F3 to select System Display.  This screen is updated once
+per second.  It shows a memory map and a table of the multi-tasking
+processes now running.
+
+7. Now go back to the Editor to compile the TUTOR program.  Type
+F1 then F1 to reach the Editor screen.
+
+8. To compile a program, type F2 then C.  If any errors are detected
+the error message will be displayed on the Editor screen and the 
+cursor positioned at the point the error was first detected.
+
+9. To run the TUTOR program, go to the Direct Mode screen (F1-F2).
+The backslash is the prompt character.  To run a main program in
+Direct Mode, just type the name of the program (as declared after
+the PROGRAM reserved word).
+Type:
+	TUTOR
+
+10. You can work through the several lessons of TUTOR to become
+more familiar with Mystic Pascal and Direct Mode programming in
+particular.
+
+11. To terminate Mystic Pascal and return to DOS, type:
+
+	F1
+	Ctrl-End
+
