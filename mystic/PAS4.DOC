@@ -1,0 +1,401 @@
+
+        Mystic Pascal  User Manual                                      22
+
+
+        7.  Multi-tasking Support
+
+             Mystic  Pascal  is  a  multi-tasking  system.   The  editor, 
+        compiler, system display and other major components are processes 
+        which execute concurrently.   Pascal programs may also use multi-
+        tasking.
+
+             In  Mystic Pascal any global procedure may be started as  an 
+        independent  process  by the START builtin procedure.   Up to  50 
+        Pascal   procedures  may  execute   concurrently.    The   system 
+        automatically  switches  among the concurrent procedures as  they 
+        execute.   Procedures  are  allowed to execute if  they  are  not 
+        in a wait state and based on their static priority and the length 
+        of  time  they  have  been waiting.   Even  the  lowest  priority 
+        procedure will execute.
+
+             Concurrent  procedures  will  run  until the  final  END  is 
+        reached.   At  that time the process will be deleted.   The  same 
+        Pascal source procedure may be started more than once -- a single 
+        source   procedure  may  have  many   incarnations.    Concurrent 
+        procedures  may be recursive,  may call  global  procedures,  may 
+        access global variables and may START global procedures.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 7:   Multi-tasking Support
+
+        Mystic Pascal  User Manual                                      23
+
+
+        7.1  Message Passing
+
+             Concurrent  procedures may communicate by passing  messages.  
+        Messages  are  processed  by  Mystic  Pascal's  queue  management 
+        system.   This  is  not  only for communication but  also  allows 
+        efficient  synchronization  among the  concurrent  procedures  -- 
+        attempting  to  receive a message from an empty queue causes  the 
+        procedure to enter a wait state until a message arrives.
+
+             Queues  are  first-in-first-out (FIFO)  storage  mechanisms.  
+        The queue messages are stored in the dynamic storage area.  
+
+             As  an example,  consider a concurrent procedure  LOG  whose 
+        purpose  is  to write one line messages to a printer.   LOG  must 
+        accept  messages from several other concurrent  procedures.   LOG 
+        has  its own input queue from which it receives messages  and  to 
+        which  other procedures send messages.   LOG can ensure that only 
+        one user at a time (itself) does printing.  If several procedures 
+        could  print  at  the same  time,  their  messages  could  become 
+        interleaved resulting in a garbled printout.
+
+                  PROCEDURE LOG;
+                  LABEL 100;
+
+                  BEGIN
+                  QUEUE('LOGQ    ');
+                  100:  RECEIVE('LOGQ    ', MSG);
+                  {print the message}
+                  GOTO 100;
+                  END;
+
+             Careful planning is necessary when concurrent procedures may 
+        access a printer, console or disk files at the same time.  Having 
+        one concurrent procedure handle all accesses is a common solution 
+        to this issue.  This is related to the concept of a "monitor."
+
+             Before a queue may be used,  it must be created by the QUEUE 
+        builtin  procedure.   Each queue must have a unique 8 byte  name.  
+        The builtin queue management procedures are:
+
+             QUEUE     create a new queue
+             SEND      store a message on a queue
+             RECEIVE   get a message from a queue
+
+
+
+
+
+
+
+
+
+        Section 7:   Multi-tasking Support
+
+        Mystic Pascal  User Manual                                      24
+
+
+        7.2  START
+
+        START( procedure_name, process_name, stack_size );
+
+             The  START  procedure  is  used  to  initiate  a  concurrent 
+        procedure.   The  procedure  will execute as a  separate  process 
+        until it terminates by reaching its final END.
+
+             The  process_name is an 8 character ASCII field.   This name 
+        is  displayed in the system display and is used in  the  PRIORITY 
+        builtin  procedure.   A  single Pascal procedure may  be  started 
+        several times.  Each start must use a unique process name.
+
+             The  stack_size is an integer expression.   It specifies the 
+        amount  of space to be allocated in paragraphs - multiples of  16 
+        bytes.   Enough space must be included for this procedure's local 
+        variables,  the  local variables of all procedures it  calls  and 
+        additional stack space for evaluating expressions.
+
+             If  the  concurrent  procedure  is recursive  or  calls  any 
+        recursive procedures,  great caution should be used in estimating 
+        the  stack_size  or an insufficient storage  run-time  error  may 
+        result.
+
+             The  priority of a concurrent procedure is initially set  to 
+        20.  This may be modified by the PRIORITY builtin procedure.
+
+
+
+             START( LOG, 'LOGPROC ', 30 );
+             START( PRINTER, 'PRINTER ', 100 );
+             START( DOWJONESPORT, 'DJP     ', 200 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 7:   Multi-tasking Support
+
+        Mystic Pascal  User Manual                                      25
+
+
+        7.3  PRIORITY                                       ** 1.6 **
+
+        PRIORITY( process_name, priority );
+
+             The PRIORITY procedure is used to modify the static priority 
+        of  a concurrent procedure which has been started.   The  initial 
+        priority is 20.   The priority parameter is an integer expression 
+        in the range 1 to 64.  
+
+
+
+             PRIORITY( 'LOGPROC ', 10 );
+             PRIORITY( 'DJP     ', 64 );
+             PRIORITY( 'CHESS A ', 40 );
+             PRIORITY( 'CHESS B ', 35 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 7:   Multi-tasking Support
+
+        Mystic Pascal  User Manual                                      26
+
+
+        7.4  QUEUE                                          ** 1.6 **
+
+        QUEUE( queue_name );
+
+             The QUEUE procedure creates a new queue for message passing.  
+        Each  queue  is identified by a unique 8 byte queue  name.   This 
+        name does not have to be ASCII.
+
+
+
+             QUEUE( 'LOGQ    ' );
+             QUEUE( 'ERRORMSG' );
+             QUEUE( 'COMMANDS' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 7:   Multi-tasking Support
+
+        Mystic Pascal  User Manual                                      27
+
+
+        7.5  SEND                                           ** 1.6 **
+
+        SEND( queue_name, variable );
+
+             The SEND procedure stores a message on a queue.   The  queue 
+        must have been created by the QUEUE procedure.
+
+             The  concurrent  procedure that issues the SEND will  resume 
+        execution immediately unless the space allowed for this queue  is 
+        full.   Then  the issuer is placed in a wait state until space is 
+        released  by another concurrent procedure removing messages  from 
+        the queue.
+
+
+
+             SEND('RED ALRT','EEG INPUT CORRELATES 1.0 WITH PREDICTION');
+             SEND( 'TREESORT', ROOTPTR );
+             SEND( 'COMPILER', SOURCEARRAY );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 7:   Multi-tasking Support
+
+        Mystic Pascal  User Manual                                      28
+
+
+        7.6  RECEIVE                                        ** 1.6 **
+
+        RECEIVE( queue_name, variable );
+
+             The  RECEIVE procedure removes the oldest message  from  the 
+        specified  queue.   If  no messages are present,  the  issuer  is 
+        placed in a wait state until a message arrives.
+
+
+
+
+             RECEIVE( 'PRINTER ', OUTPUTLINE );
+             RECEIVE( 'BROKER3 ', STOCKORDER );
+             RECEIVE( 'EDITOR  ', COMMAND );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 7:   Multi-tasking Support
+
+
