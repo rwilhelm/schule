@@ -1,0 +1,145 @@
+
+Dateien auf den Disketten
+-------------------------
+Das Programm INSTALL kopiert die folgenden Dateien auf Ihre Festplatte.
+Bei einer Installation auf Disketten werden nur die Dateien TURBO.TPL,
+TURBO.EXE und TPC.EXE kopiert.
+
+
+Diskette 1: Installation/Compiler
+---------------------------------
+INSTALL.EXE            Installiert Turbo Pascal auf Ihrem System
+README.COM             Liest die Datei README
+UNZIP.EXE              Programm zum Auspacken der .ZIP-Dateien
+
+TURBO.ZIP              Archiv-Datei, enthÑlt:
+  TURBO.EXE            Turbo Pascal Integrierte Entwicklungsumgebung
+  TURBO.TPL            Residente Units von Turbo Pascal
+  TURBO.TP             Konfigurationsdatei von TURBO.EXE
+  TPC.EXE              Kommandozeilenversion von Turbo Pascal
+
+README                 EnthÑlt aktuelle Informationen zu TP 6.0
+
+Diskette 2: Turbo Vision/Tour
+-----------------------------
+TVISION.ZIP            Archiv-Datei, enthÑlt Turbo-Vision-Units:
+  APP.PAS              Quelldatei der Unit Application
+  BUFFERS.PAS          Quelldatei der Unit Buffers
+  COLORSEL.PAS         Quelldatei der Unit ColorSelection
+  EDITORS.PAS          Quelldatei der Unit Editors
+  MSGBOX.PAS           Quelldatei der Unit MessageBox
+  STDDLG.PAS           Quelldatei der Unit StandardDialogs
+  APP.TPU              Unit Application
+  BUFFERS.TPU          Unit Buffers
+  COLORSEL.TPU         Unit ColorSelection
+  DIALOGS.TPU          Unit Dialogs
+  DRIVERS.TPU          Unit Drivers
+  EDITORS.TPU          Unit Editors
+  HISTLIST.TPU         Unit HistoryList
+  MEMORY.TPU           Unit MemoryManagement
+  MENUS.TPU            Unit Menus
+  MSGBOX.TPU           Unit MessageBox
+  OBJECTS.TPU          Unit StandardObjects
+  STDDLG.TPU           Unit StandardDialogs
+  TEXTVIEW.TPU         Unit TextWindow
+  VIEWS.TPU            Unit Views
+
+TVDEMOS.ZIP            Archiv-Datei, enthÑlt Turbo Vision Demos:
+  TVDEMO.PAS           Demo, schlie·t folgende Funktionen ein:
+  DEMOHELP.HLP         Compilierte Hilfedatei von TVDEMO
+  ASCIITAB.PAS         Gibt eine ASCII-Tabelle aus
+  CALC.PAS             Desktop-Taschenrechner
+  CALENDAR.PAS         Desktop-Kalender (MonatsÅbersicht)
+  DEMOHELP.PAS         Kontextdatei, entsteht, wenn HC auf DEMOHELP.TXT 
+                       angewendet wird
+  FVIEWER.PAS          Textdatei-Viewer
+  GADGETS.PAS          Desktop-Schnickschnack (Uhr, Heap-Viewer)
+  HELPFILE.PAS         Hilfesystem-Manager
+  MOUSEDLG.PAS         Dialog Mausoptionen
+  PUZZLE.PAS           Einfaches Puzzle
+  DEMOCMDS.PAS         Befehlskonstanten fÅr TVDEMO.PAS
+  TVHC.PAS             Hilfetext-Compiler
+  DEMOHELP.TXT         Quelle der Hilfedatei von TVDEMO
+  TVRDEMO.PAS          TVDEMO.PAS mit Ressourcen- und Overlay-Dateien
+  MKRDEMO.BAT          Batch-Datei zur Compilierung von TVRDEMO.EXE
+  GENRDEMO.PAS         Wird von TVRDMAKE.BAT zur Erstellung von Ressourcen-
+                       Dateien fÅr TVRDEMO.PAS verwendet
+  TVEDIT.PAS           Beispielprogramm fÅr die Unit EDITORS 
+  TVFORMS.PAS          Beispielprogramm fÅr Formularerstellung und Editor
+  FORMCMDS.PAS         Befehlskonstanten
+  DATACOLL.PAS         Kollektion mit Datenrecords
+  LISTDLG.PAS          Bearbeitung von Listen
+  FIELDS.PAS           Felder editieren und Daten eingeben
+  FORMS.PAS            Bearbeitung von Formularen
+  PARTS.TVF            Beispieldaten
+  PHONENUM.TVF         Beispieldaten
+  GENFORMS.BAT         Generiert Dateien mit Beispieldaten fÅr TVFORMS.PAS
+  GENFORM.PAS          Wird von GENFORMS.BAT verwendet
+  GENPARTS.PAS         Wird von GENFORMS.BAT verwendet
+  GENPHONE.PAS         Wird von GENFORMS.BAT verwendet
+  FILEVIEW.PAS         Einfaches Programm zum Anschauen von Dateien/Disks
+  TVBGI.PAS            Demo BGI-Supportunit (GRAPHAPP)
+  GRAPHAPP.PAS         Supportunit fÅr Swapping zwischen Turbo Vision und BGI
+  TVTXTDMO.PAS         Demo TEXTVIEW-Unit
+INTRFACE.ZIP           Archiv-Datei, enthÑlt Interface-Abschnitte der
+                       Turbo-Vision-Units
+TURBO3.ZIP             Archiv-Datei, enthÑlt die KompatibilitÑtsunits
+                       TURBO3 und GRAPH3
+TOUR.ZIP               Archiv-Datei enthÑlt IDE-Tour und dessen Overlays
+
+
+Diskette 3: Online-Hilfe
+------------------------
+HELP.CA1               1. Teil der Online-Hilfedatei TURBO.HLP
+
+
+Diskette 4: BGI/Hilfsprogramme
+------------------------------
+BGI.ZIP                Archiv-Datei, enthÑlt BGI-Treiber und Support-Dateien:
+  GRAPH.TPU            Borland Graphics Interface (BGI) Graph-Unit
+  ATT.BGI              Grafiktreiber fÅr AT&T 6300
+  CGA.BGI              Grafiktreiber fÅr CGA und MCGA
+  EGAVGA.BGI           Grafiktreiber fÅr EGA und VGA
+  HERC.BGI             Grafiktreiber fÅr Hercules
+  IBM8514.BGI          Grafiktreiber fÅr IBM 8514
+  PC3270.BGI           Grafiktreiber fÅr 3270 PC
+  GOTH.CHR             Vektor-Zeichensatz Gothic
+  LITT.CHR             Vektor-Zeichensatz Small
+  SANS.CHR             Vektor-Zeichensatz Sans serif
+  TRIP.CHR             Vektor-Zeichensatz Triplex
+  ARTY.PAS             Grafik-Demo
+  BGIDEMO.PAS          Grafik-Demo
+  BGILINK.PAS          Grafik-Demo
+  BGIDRIV.PAS          Grafik-Demo
+  BGIFONT.PAS          Grafik-Demo
+  BGILINK.MAK          Make-Datei der Grafik-Demo
+
+HELP.CA2               2. Teil der Online-Hilfedatei TURBO.HLP
+
+ONLINE.ZIP             Archiv-Datei, enthÑlt Online-Dokumentation:
+  HELPME!.DOC          Beantwortet allgemeine technische Fragen
+  BUFFERS.DOC          Dokumentation der Turbo-Vision-Unit Buffers
+  EDITORS.DOC          Dokumentation der Turbo-Vision-Unit Editors
+  TEMC.DOC             Dokumentation des Makro-Compilers fÅr den Editor
+DEMOS.ZIP              Archiv-Datei, enthÑlt verschiedene Demoprogramme  
+TCALC.ZIP              Archiv-Datei, enthÑlt den Quellcode von Turbo Calc
+UTILS.ZIP
+  THELP.COM            Residentes Online-Hilfe-Programm
+  TPUMOVER.EXE         Verwaltung von Unit-Bibliotheken
+  TEMC.EXE             Turbo-Editor-Makro-Compiler
+  GREP.COM             Durchsucht Quelltext-Dateien
+  MAKE.EXE             Verwaltung fÅr gro·e Programmprojekte
+  TOUCH.COM            VerÑndert Datum und Uhrzeit von Dateien
+  EMSTEST.COM          Expanded Memory (EMS) Diagnoseprogramm
+  BINOBJ.EXE           Konvertiert Dateien in .OBJ-Dateien
+  
+Diskette 5: TPCX 
+-------------------------------
+DOCDEMOS.ZIP           Beispielprogramme aus dem Benutzerhandbuch und dem
+                       Turbo-Vision-Handbuch
+TPCX.ZIP
+  TPCX.EXE             Kommandozeilen-Version des Compilers (Extended Memory)
+  TPCXINST.EXE         Installationsprogramm von TPCX.EXE
+  CPUTEST.EXE          CPU-Diagnoseprogramm fÅr TPCX.EXE
+
+FILELIST.DOC           Diese Datei
