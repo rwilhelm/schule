@@ -1,0 +1,9 @@
+22 MOD 5  => 2 (Divisionsrest)
+22 DIV 5  => 4
+
+IF zeichenzahl MOD 60 = 0 THEN  ...
+                                ...
+                                ...
+
+zeichenzahl:=zeichenzahl+1
+INC (zeichenzahl)
