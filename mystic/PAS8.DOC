@@ -1,0 +1,173 @@
+
+        Mystic Pascal  User Manual                                      76
+
+
+        11.  Programming Notes
+
+
+             This   section  contains  a  list  of  informal  programming 
+        suggestions.  Experienced programmers will find nothing new here.  
+        Users who are new to programming may find some tips here that are 
+        useful.
+
+             Some  of  these  notes concern programming  in  general  and 
+        others are specific to Pascal.
+
+
+        1. Pascal procedures and functions should be kept small.  If they 
+        are 24 lines or smaller,  you can view an entire procedure on one 
+        CRT screen.
+
+        2.  Give  meaningful names to all the program's  constants,  data 
+        types, variables, procedures and functions.  Mystic Pascal allows 
+        identifiers to be any length and all characters are  significant.  
+        When  meaningful  names are used,  your Pascal program  is  self-
+        documenting.
+
+        3.  Use the programming technique of "stepwise refinement."  That 
+        is,  after you have completed the high level program design,  get 
+        some basic parts of the program running first, then gradually add 
+        more  features until the whole program is complete.   If you  can 
+        see interesting results from your program early on,  its good for 
+        your morale and makes work easier.   By using stepwise refinement 
+        you  can  focus your attention on one small objective at a  time.  
+        Debugging  is also simplified since any bugs will probably be  in 
+        the small areas most recently changed.
+
+        4.  If  some  section  of  a program  gradually  evolves  into  a 
+        patchwork of changes and changes upon changes, it is usually best 
+        to  throw  it  out and reprogram that  section.   This  may  seem 
+        wasteful but you can probably reprogram some process in one fifth 
+        the  time  it originally took.   You will gain  a  cleaner,  more 
+        reliable,  more efficient piece of code.   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 11:   Programming Notes
+
+        Mystic Pascal  User Manual                                      77
+
+
+        5.  When  you  have a bug in your program that takes more than  5 
+        minutes  to resolve,  this simple technique may  be  surprisingly 
+        effective in organizing the debugging effort.
+
+                  1.  Take a fresh sheet of paper -- it  really 
+                 is  important  to have a clean work area  free 
+                 from distracting unrelated information.
+
+                  2.  Make a list of all known symptoms of  the 
+                 bug.
+
+                  3. Make a list of 3 to 5 hypotheses which may 
+                 explain the error.
+
+                  4.  Perform  further tests on the program  to 
+                 gather more information.   The tests should be 
+                 guided by the hypotheses.
+
+                  5.  Proceed with testing, adding new symptoms 
+                 to the list,  deleting disqualified hypotheses 
+                 and  adding new hypotheses until the answer is 
+                 found.
+
+             The  purpose of this technique is to clarify your vision  of 
+        the  problem state.   This procedure may lead very quickly  to  a 
+        solution  to difficult problems.   This is essentially the method 
+        used  by some types of artificial intelligence expert systems  to 
+        solve very hard problems.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 11:   Programming Notes
+
+        Mystic Pascal  User Manual                                      78
+
+
+        6.  When your program creates or modifies complex data structures 
+        it  is  extremely useful to have  a  validation  procedure.   The 
+        Mystic Pascal system itself contains validation code which checks 
+        over  the  structure of the Dynamic Storage and Laser at  regular 
+        intervals.   This code is activated every few seconds by the IDLE 
+        process.  
+
+             Programs  which  create and maintain large linked  lists  or 
+        trees  in  dynamic  storage  or  which  maintain  complex  tables 
+        (arrays) of data are prone to program anomolies (bugs) which  can 
+        be  very hard to detect.   Since the computer is a master at  the 
+        tedious  and detailed inspection of minutae,  why not let it keep 
+        an eye on your exquisitely complex structures of data?  
+
+             For  example,  if you are creating a linked list in  dynamic 
+        storage  using the NEW procedure,   a validation procedure  might 
+        travel  down the linked list examining each field in each  record 
+        for reasonable values.  When it finds some questionable value, it 
+        can  report  a  probable error and  perhaps  interrupt  the  main 
+        program.
+
+             A  validation  procedure  may  be  called  every  time   the 
+        structure is modified or only after some major modifications.  Or 
+        in  Mystic  Pascal,  it  could  be implemented  as  a  concurrent 
+        procedure with a rather low priority.
+
+             The  small  amount  of time needed  to  write  a  validation 
+        procedure for a complex data structure can be returned many times 
+        in  reduced debugging time.   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 11:   Programming Notes
+
+
