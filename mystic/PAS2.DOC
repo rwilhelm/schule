@@ -1,0 +1,344 @@
+
+        Mystic Pascal  User Manual                                      12
+
+
+        3.  Full Screen Editor
+
+             Mystic  Pascal  provides a full screen editor which is  used 
+        for  entering,  modifying and inspecting Pascal source  programs.  
+        It is not intended for editing other types of files.
+
+             You can edit your Pascal program as a text file although the 
+        editor stores the program in a "tokenized" format.   A token is a 
+        one byte code which can represent an entire Pascal reserved word.  
+        For  example,  the  reserved word PROCEDURE uses 9 bytes in  text 
+        format  but only one byte in token format.   Obviously a  typical 
+        Pascal program can be greatly compressed by using token format.
+
+             The  editor converts all identifiers to upper case  when  it 
+        stores  them  in  its table.   You can use an  option  switch  to 
+        control  whether  reserved words,  standard identifiers and  user 
+        defined identifiers are displayed in lower or upper case.  (Refer 
+        to   section  4.1  of  this  manual.)    For  example,   the  two 
+        identifiers "Initialize" and "INITIALIZE" are treated as the same 
+        identifier.
+
+             Source  programs  must  not contain lines  greater  than  80 
+        characters, the width of the standard display screen.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 3:   Full Screen Editor
+
+        Mystic Pascal  User Manual                                      13
+
+
+        3.1  Loading and Saving Pascal Programs
+
+             When you want to work on a Pascal program which is saved  on 
+        disk,  you  must load it into Mystic Pascal.   To load a  program 
+        from  disk,  go  to  the Editor screen.   (F1 is used  to  switch 
+        between  the different screens.)  If you are in the  Editor,  hit 
+        F2.  This will display the Editor command menu.  Select command L 
+        for load.    You will be asked the name of the file to be loaded.  
+        The 3 character filetype must be keyed in with the filename.   It 
+        does not assume any default filetype.   A disk letter prefix  may 
+        be added to access files not on the current disk drive.
+
+             Sample filenames with filetypes:
+                  TEST.PAS            c:stock.mdl
+                  Startrek.bak        b:Train.set
+
+             If the file is not found or there is some other  error,  the 
+        error  message  will  be  displayed and you may  then  retry  the 
+        operation.
+
+             To  save  a  the Pascal program currently  residing  in  the 
+        editor is a nearly identical process.  Enter F2, then S, then the 
+        filename.filetype.   The filename need not be the same as in  the 
+        last Load command.
+
+
+
+        3.2  Entering a New Pascal Program
+
+             When  Mystic Pascal is first started the editor is empty and 
+        a new program may be directly keyed in.  If there is a program in 
+        the editor and you wish to enter a new program,  key F2,  then N.  
+        This  command clears out the editor.   Any program in the  editor 
+        buffer is cleared out of the buffer by the New command.  You  can 
+        use the Save command to save such a program first.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 3:   Full Screen Editor
+
+        Mystic Pascal  User Manual                                      14
+
+
+        3.3  Editing Commands
+
+             Mystic  Pascal  editing commands are used to modify text  on 
+        the CRT screen for the current Pascal program.   Many people  are 
+        experienced  with the Wordstar word processing  program.   Mystic 
+        Pascal's edit commands are similar to those commands.
+
+
+        3.3.1  Cursor Movement Commands
+
+        right one character           Control D      right arrow
+        left one character            Control S      left arrow
+        up one line                   Control E      up arrow
+        down one line                 Control X      down arrow
+        right one word                Control F      Control right arrow
+        left one word                 Control A      Control left arrow
+        top of file                   Home
+        end of file                   End
+        tab                           Tab 
+        reverse tab                   Shift Tab
+        next line                     return
+
+
+        3.3.2  Scroll Commands
+
+        scroll up one line            Control Z
+        scroll down one line          Control W
+        scroll up one page            Control C      PgUp
+        scroll down one page          Control R      PgDn
+
+
+        3.3.3  Insert and Delete Commands
+
+        insert mode toggle            Control V      Ins
+        insert new line               Control N      
+        delete character              Control G      Del
+        destructive backspace         Control H      right arrow key 14
+        delete word right             Control T
+        delete line                   Control Y
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Section 3:   Full Screen Editor
+
+        Mystic Pascal  User Manual                                      15
+
+
+        3.4  Compiling a Pascal Program
+
+             To  compile a Pascal program you must first load it into the 
+        editor.   Generally a program you are working on will already  be 
+        in the editor.
+
+             Once  your  program  is  loaded and you are  in  the  editor 
+        screen,  then to compile the program, enter key F2 then letter C.  
+        If  the  compile has no errors,  a small window will display  the 
+        elapsed  time of the compile and the compiler speed in lines  per 
+        second.   The size of the code generated is also displayed.   Hit 
+        any key to remove the window.
+
+             To compile, enter
+
+                  F2   then    C
+
+             If  there  is an error during the  compile,  the  cursor  is 
+        positioned  at the location of the error (or just past it) in the 
+        source program.  An error message is displayed in a small window.  
+        Hit any key to remove the window and resume editing.  Correct the 
+        error and you can then recompile.
+
+
+
+        Technical Notes
+
+              Mystic  Pascal  uses an advanced compiler  architecture  to 
+        achieve very high compile speed.  The "Lines per second" value is 
+        intended  to show the effective compilation speed for  comparison 
+        with other compilers.
+
+             The  compiler  elapsed time is measured using  the  Personal 
+        Computer's  timer tick interrupt which occurs every 0.055  second 
+        (18.2  times per second).   If,  by chance,  no timer ticks occur 
+        between the start and finish of the compilation,  then the actual 
+        time must have been between 0.0 and 0.055 second.   In this case, 
+        the elapsed time is adjusted to 0.030 second,  a middle value, to 
+        avoid division by zero in computing the lines per second.
+
+
+
+        3.5  EXE File Create                                ** 1.6 **
+
+             After   a  Pascal  program  has  successfully  compiled,   a 
+        standalone  EXE file version of the program may be  created  with 
+        the 'E' command on the F2 menu.  
+
+
+
+
+
+        Section 3:   Full Screen Editor
+
+        Mystic Pascal  User Manual                                      16
+
+
+        4.  Direct Mode
+
+             In the Direct Mode screen,  Pascal statements may be entered 
+        directly.   They are instantly compiled, executed and any results 
+        displayed.
+
+             The  statements are compiled at the global level.   You  can 
+        access  all  global variables,  procedures and functions but  not 
+        those  declared within a procedure or function.   Each  statement 
+        must fit on one line.   Multiple statements may be entered on one 
+        line.
+
+             The backslash "\" is the prompt character.
+
+             To run the entire program,  type the program's name which is 
+        declared in the program header.
+
+             Since  many  Direct Mode statements will use  the  procedure  
+        WRITE  to display the value of variables,  an abbreviated form is 
+        provided.  
+
+             .X, Y, Z       is equivalent to
+             WRITE(X, Y, Z)
+
+             When using the dot print command,  no other statements  must 
+        appear on the line and the dot must be the first character.
+
+
+
+        4.1  Case Control
+
+             The  #CASE  command controls the display of upper and  lower 
+        case in the editor screen and for the Save command.   Three types 
+        of  words  - reserved words,  predefined  identifiers  and  user-
+        declared  identifiers - may be displayed in either upper or lower 
+        case.  The #CASE command is keyed into the Direct Mode screen.
+
+             The format is:
+
+                  #CASE=abc
+
+             a,  b and c may be either 'U' or 'L'.   No spaces or  commas 
+        are allowed in this command.
+
+             a = reserved word case
+             b = predefined identifiers case
+             c = user-declared identifiers case
+
+             The initial setting is  #CASE=ULL.
+
+
+
+        Section 4:   Direct Mode
+
+        Mystic Pascal  User Manual                                      17
+
+
+
+        4.2  Video Snow
+
+             The IBM Color Adapter may produce video noise or "snow" when 
+        the video memory is directly updated.   Mystic Pascal does access 
+        the  video memory directly because this is many times faster than 
+        operating  through DOS.   Mystic Pascal is able to  suppress  the 
+        snow  effect,  but  this may greatly slow down the display  speed 
+        since screen updates may only be done during vertical retrace.
+
+             Snow suppression is automatically turned on when running  on 
+        the  Color  card.   Snow  suppression may be  suppressed  by  the 
+        Mysticin installation program,  because some IBM compatible color 
+        cards  do  not produce snow and should not be forced to  pay  the 
+        speed penalty.
+
+             Snow  suppression  may also be toggled on and off  with  the 
+        #SNOW command in Direct Mode.  Do not use this command if a color 
+        card is not present!   Color card users can easily see the effect 
+        of snow suppression by trying this command and then examining the 
+        System Display screen.
+
+
+        4.3  Intermediate Code Listing
+
+             The  Mystic  Pascal  compiler  parser  outputs  intermediate 
+        codes.  The code generator then converts these "icodes" into 8086 
+        object code.  Mystic's first optimizer operates on the icodes and 
+        the second optimizer operates on the 8086 code.  
+
+             The  #LIST  command produces a listing of the icodes on  the 
+        printer.   This  listing is only for informational  purposes  for 
+        hackers and other curious people.
+
+             The formats are:
+
+             #LIST = 1      Turn on Icode listing
+             #LIST = 0      Turn off Icode listing
+
+             Warning!   The Icode listing for a large program can be VERY 
+        long and may not be interrupted once begun.
+
+
+        4.4  Clear Screen Command
+
+             In  Direct  Mode the screen may be cleared by  entering  '#' 
+        followed by a return.
+
+
+
+
+
+        Section 4:   Direct Mode
+
+
